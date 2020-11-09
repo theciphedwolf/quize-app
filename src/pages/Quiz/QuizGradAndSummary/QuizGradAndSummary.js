@@ -20,7 +20,7 @@ const layout = {
   wrapperCol: { span: 12 },
 };
 
-const QuizGradAndSummary = () => {
+const QuizGradAndSummary = ({ match }) => {
   const [endText, setEndText] = useState("");
   const [passText, setPassText] = useState("");
   const [failText, setFailText] = useState("");
@@ -36,12 +36,9 @@ const QuizGradAndSummary = () => {
     data.quizGradAndSummary.email = email;
     data.quizGradAndSummary.feedback = feedback;
 
-    const res = await Api.updateOne(
-      "quizs",
-      localStorage.getItem("quiz"),
-      data
-    );
+    const res = await Api.updateOne("quizs", match.params.id, data);
     console.log(res);
+    console.log(localStorage.getItem("@quiz"));
     if (res.status === "success") {
       message.success("Data Saved");
     }

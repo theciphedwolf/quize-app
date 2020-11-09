@@ -19,7 +19,7 @@ const layout = {
   wrapperCol: { span: 12 },
 };
 
-const QuestionManager = () => {
+const QuestionManager = ({ match }) => {
   const handleSubmit = async ({ asAsAbove, ...data }) => {
     const res = await Api.addOne("subjects", data);
     console.log(res);

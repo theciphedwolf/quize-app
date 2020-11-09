@@ -19,18 +19,14 @@ const layout = {
   wrapperCol: { span: 12 },
 };
 
-const TimerSetting = () => {
+const TimerSetting = ({ match }) => {
   const [questionBasedTiming, setQuestionBasedTiming] = useState(true);
   const [manualActivateQuiz, setManualActivateQuiz] = useState(true);
 
   const handleSubmit = async ({ asAsAbove, ...data }) => {
     data.timerSetting.manualActivation = manualActivateQuiz;
     data.timerSetting.questionBasedTiming = questionBasedTiming;
-    const res = await Api.updateOne(
-      "quizs",
-      localStorage.getItem("quiz"),
-      data
-    );
+    const res = await Api.updateOne("quizs", match.params.id, data);
     console.log(res);
     if (res.status === "success") {
       message.success("Data Saved");

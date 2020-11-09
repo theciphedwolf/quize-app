@@ -19,6 +19,10 @@ import CreateStudentGroup from "../pages/StudentGroup/CreateStudentGroup";
 import ViewStudentGroups from "../pages/StudentGroup/ViewStudentGroups";
 import ViewStudentGroup from "../pages/StudentGroup/ViewStudentGroup";
 import CreateQuestion from "../pages/Question/AddQuestion";
+import TakeQuiz from "../pages/TakeQuiz";
+import EndQuiz from "../components/EndQuiz";
+import StudentQuiz from "../components/StudentQuiz";
+import QuizInitiateComponent from "../components/QuizInitiateComponent";
 
 const Dashboard = () => {
   return (
@@ -31,34 +35,54 @@ const Dashboard = () => {
         <Layout.Content>
           <Switch>
             <Route path="/" component={Portal} exact />
-
+            <Route path="/addsubject" component={AddSubjects} exact />
+            <Route path="/subjects" component={Subjects} exact />
             <Route
               path="/addStudentsGroups"
               component={CreateStudentGroup}
               exact
             />
-
-            <Route path="/subjects" component={Subjects} exact />
-            <Route path="/addsubject" component={AddSubjects} exact />
             <Route path="/studentgroups" component={ViewStudentGroups} exact />
             <Route
               path="/studentgroup/:id"
               component={ViewStudentGroup}
               exact
             />
-            <Route path="/addnewquiz" component={CreateNewQuiz} exact />
-            <Route path="/addQuizSettings" component={BasicQuizSetting} exact />
-            <Route path="/questionmanager" component={QuestionManager} exact />
-            <Route path="/questionorder" component={QuestionOrder} exact />
-            <Route path="/quizsharing" component={QuizSharing} exact />
+            <Route path="/studentQuiz" component={StudentQuiz} exact />
+            <Route path="/addnewquiz/:id" component={CreateNewQuiz} exact />
+            <Route path="/addnewquiz" component={BasicQuizSetting} exact />
+            <Route
+              path="/addQuizSettings/:id"
+              component={BasicQuizSetting}
+              exact
+            />
+            <Route
+              path="/questionmanager/:id"
+              component={QuestionManager}
+              exact
+            />
+            <Route path="/questionorder/:id" component={QuestionOrder} exact />
+            <Route path="/quizsharing/:id" component={QuizSharing} exact />
             <Route path="/addquestions" component={CreateQuestion} exact />
             <Route
-              path="/quizgradandsummary"
+              path="/quizgradandsummary/:id"
               component={QuizGradAndSummary}
               exact
             />
-            <Route path="/quizinstruction" component={QuizInstruction} exact />
-            <Route path="/timersettings" component={TimerSetting} exact />
+            <Route
+              path="/quizinstruction/:id"
+              component={QuizInstruction}
+              exact
+            />
+            <Route path="/timersettings/:id" component={TimerSetting} exact />
+
+            <Route
+              path="/quizinitiate/:id"
+              component={QuizInitiateComponent}
+              exact
+            />
+            <Route path="/takequiz" component={TakeQuiz} exact />
+            <Route path="/endquiz" component={EndQuiz} exact />
           </Switch>
         </Layout.Content>
 

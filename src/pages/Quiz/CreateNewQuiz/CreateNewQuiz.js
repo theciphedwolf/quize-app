@@ -14,7 +14,8 @@ import {
 } from "@ant-design/icons";
 
 import styled from "styled-components";
-const CreateNewQuiz = () => {
+import { Link } from "react-router-dom";
+const CreateNewQuiz = ({ match }) => {
   return (
     <div>
       <Breadcrumb style={{ margin: 16 }}>
@@ -52,31 +53,51 @@ const CreateNewQuiz = () => {
                   }}
                 >
                   <p>
-                    Quiz Preview <SearchOutlined />
+                    <Link to="">
+                      Quiz Preview <SearchOutlined />
+                    </Link>
                   </p>
                   <p>
-                    Quiz Info <InfoCircleOutlined />
+                    <Link to="">
+                      Quiz Info <InfoCircleOutlined />
+                    </Link>
                   </p>
                 </div>
 
                 <h4>
-                  General Settings <SettingOutlined />
+                  <Link to={`/BasicSetting/${match.params.id}`}>
+                    General Settings <SettingOutlined />
+                  </Link>
                 </h4>
                 <h4>
-                  Question Manager <BarsOutlined />
-                </h4>
-                <h4>Question Order</h4>
-                <h4>
-                  Quiz Sharing <ShareAltOutlined />
+                  <Link to={`/questionManager/${match.params.id}`}>
+                    Question Manager <BarsOutlined />
+                  </Link>
                 </h4>
                 <h4>
-                  Quiz Instruction <FolderAddOutlined />
+                  <Link to={`/questionorder/${match.params.id}`}>
+                    Question Order
+                  </Link>
                 </h4>
                 <h4>
-                  Quiz Grad And Summary <FlagOutlined />
+                  <Link to={`/quizsharing/${match.params.id}`}>
+                    Quiz Sharing <ShareAltOutlined />
+                  </Link>
                 </h4>
                 <h4>
-                  Timer Setting <ClockCircleOutlined />
+                  <Link to={`/quizinstruction/${match.params.id}`}>
+                    Quiz Instruction <FolderAddOutlined />
+                  </Link>
+                </h4>
+                <h4>
+                  <Link to={`/quizgradandsummary/${match.params.id}`}>
+                    Quiz Grad And Summary <FlagOutlined />
+                  </Link>
+                </h4>
+                <h4>
+                  <Link to={`/timersettings/${match.params.id}`}>
+                    Timer Setting <ClockCircleOutlined />
+                  </Link>
                 </h4>
 
                 <Button>Activate Quiz</Button>

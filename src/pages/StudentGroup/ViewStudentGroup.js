@@ -12,7 +12,7 @@ const ViewStudentGroup = ({ match, history }) => {
       setStudents(response.data.data.students);
     };
     fetchItem();
-  }, students);
+  }, []);
 
   return (
     <div>

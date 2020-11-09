@@ -19,12 +19,13 @@ const layout = {
   wrapperCol: { span: 12 },
 };
 
-const BasicQuizSetting = () => {
+const BasicQuizSetting = ({ history }) => {
   const handleSubmit = async ({ asAsAbove, ...data }) => {
     const res = await Api.addOne("quizs", data);
     console.log(res);
     if (res.status === "success") {
       message.success("Data Saved");
+      history.push("./");
     }
   };
 

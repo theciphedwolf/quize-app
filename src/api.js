@@ -47,6 +47,12 @@ export default class Api {
     return fetcheditems;
   }
 
+  static async getAllWhere(model, parentModel, id) {
+    const data = await fetch(`${this.API_URL}/${model}/${parentModel}/${id}`);
+    const fetcheditems = await data.json();
+    return fetcheditems;
+  }
+
   static async getOne(model, id) {
     const data = await fetch(`${this.API_URL}/${model}/${id}`);
     const fetcheditem = await data.json();

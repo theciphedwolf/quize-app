@@ -1,5 +1,6 @@
 import React from "react";
 import { Card } from "antd";
+import { Link } from "react-router-dom";
 const QuizCard = ({
   createdDate,
   quizDate,
@@ -26,6 +27,11 @@ const QuizCard = ({
       </div>
       <p>{quizTitle}</p>
       <p>{quizDescription}</p>
+      <p>
+        <Link to={`/addnewquiz/${id}`}>Change Quiz Settings</Link>
+        <br></br>
+        <Link to={`/quizinitiate/${id}`}>Take This Quiz</Link>
+      </p>
     </Card>
   );
 };

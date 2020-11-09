@@ -9,15 +9,11 @@ const layout = {
   wrapperCol: { span: 12 },
 };
 
-const QuestionOrder = () => {
+const QuestionOrder = ({ match }) => {
   const [radioValue, setRadioValue] = useState(false);
 
   const handleSubmit = async ({ asAsAbove, ...data }) => {
-    const res = await Api.updateOne(
-      "quizs",
-      localStorage.getItem("quiz"),
-      data
-    );
+    const res = await Api.updateOne("quizs", match.params.id, data);
     console.log(res);
     if (res.status === "success") {
       message.success("Data Saved");

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Card, Breadcrumb, Space, Form, message, Button } from "antd";
+import { Card, Breadcrumb, Space, Form, message, Button, Checkbox } from "antd";
 import { HomeOutlined } from "@ant-design/icons";
 import "react-quill/dist/quill.snow.css";
 import ReactQuill from "react-quill";
@@ -11,17 +11,30 @@ const layout = {
   wrapperCol: { span: 12 },
 };
 
-const QuizInstruction = () => {
+const QuizInstruction = ({ match }) => {
+  const plainOptions = [
+    "Name",
+    "Grade",
+    "School",
+    "TeacherName",
+    "Email",
+    "Mobile",
+  ];
   const [value, setValue] = useState("");
+  const [infoNeeded, setInfoNeeded] = useState("");
   const handleSubmit = async () => {
-    const res = await Api.updateOne("quizs", localStorage.getItem("quiz"), {
-      quizInstruction: value,
+    const res = await Api.updateOne("quizs", match.params.id, {
+      quizInstructions: { instructions: value, quizInitiationForm: infoNeeded },
     });
     console.log(res);
     if (res.status === "success") {
       message.success("Data Saved");
     }
   };
+
+  function onChange(checkedValues) {
+    setInfoNeeded(checkedValues);
+  }
 
   return (
     <Container>
@@ -37,6 +50,14 @@ const QuizInstruction = () => {
           <h3>Add New Subject</h3>
           <p>Provide Quiz Instructions Here</p>
           <ReactQuill theme="snow" value={value} onChange={setValue} />
+
+          <Form.Item wrapperCol={{ offset: 6 }}>
+            <Checkbox.Group
+              options={plainOptions}
+              defaultValue={["name"]}
+              onChange={onChange}
+            />
+          </Form.Item>
 
           <Form.Item wrapperCol={{ offset: 6 }}>
             <Space>
