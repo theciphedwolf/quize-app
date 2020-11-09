@@ -35,9 +35,10 @@ const Header = () => {
             alt="profile"
           />
           <span>
-            {JSON.parse(localStorage.getItem("@user")).firstName +
-              " " +
-              JSON.parse(localStorage.getItem("@user")).lastName}
+            {//JSON.parse(localStorage.getItem("@user")).firstName +
+              //" " +
+              //JSON.parse(localStorage.getItem("@user")).lastName
+}
           </span>
         </AdminButton>
       </Dropdown>
