@@ -1,6 +1,6 @@
 export default class Api {
   static API_URL =
-    process.env.REACT_APP_API_URL || "http://localhost:5000/api/v1";
+process.env.REACT_APP_API_URL || "http://95.217.209.124:5000/api/v1";
 
   static async login(username, password) {
     const data = await fetch(`${this.API_URL}/users/login`, {
